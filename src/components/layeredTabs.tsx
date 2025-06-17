@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback, ReactElement, isValidElement, useMemo } from "react";
 
 function isValidCssColor(color: string): boolean {
+  if (typeof window === 'undefined') return false; // or false, depending on your fallback
   const s = new Option().style;
   s.color = ""; // Reset in case it's inheriting anything
   s.color = color;
@@ -32,7 +33,7 @@ Tab.displayName = "LayeredTabs.Tab";
 
 type LayeredTabsComponent = React.FC<LayeredTabsParams> & { Tab: React.FC<TabProps>; };
 
-  const LayeredTabs: LayeredTabsComponent = ({ fondoBarColor = "white", ptgnBarColor = "white", fondoColor = "white", slcPptgnColor = "white", tabBarPostn = 0, maxSize = "xl", children, tabWidth = 8, fixedMaxSize = false, fullWindow = true } ) => {
+  const LayeredTabs: LayeredTabsComponent = ({ fondoBarColor = "white", ptgnBarColor = "white", fondoColor = "white", slcPptgnColor = "white", tabBarPostn = 0, maxSize = "xl", children, tabWidth = 8, fixedMaxSize = false, fullWindow = false } ) => {
 
   const [tabBarPosition, setTabBarPosition] = useState(0);
   useEffect(() => {
