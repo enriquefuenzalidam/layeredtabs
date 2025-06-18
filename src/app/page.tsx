@@ -27,7 +27,7 @@ export default function Home() {
           maxSize = "xl"            // "xl", "lg", "md", "sm" o "xs"
                                     // Predefinido "xl"
 
-          tabWidth = {8}            // "5", "8" o "11"
+          tabWidth = {8}            // "5", "8" u "11"
                                     // Predefinido "8"
 
           fixedMaxSize = {false}    // Tamaño responsivo en
@@ -46,7 +46,7 @@ export default function Home() {
               independentBgColor = "white"  // Color de fondo. Predefinido "white"
               independentTxColor = "black"  // Color del texto. Predefinido "black"
           >
-                                           {/* Puede ser dejado vacío */}
+                                           {/* Puede quedar vacío */}
             Hello A                        {/* Puede incluir texto plano */}
                                            {/* Puede incluir HTML */}
 
