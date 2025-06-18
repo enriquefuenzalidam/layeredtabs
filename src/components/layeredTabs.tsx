@@ -5,8 +5,7 @@ function isValidCssColor(color: string): boolean {
   const s = new Option().style;
   s.color = ""; // Reset in case it's inheriting anything
   s.color = color;
-  return !!s.color;
-}
+  return !!s.color };
 
 interface LayeredTabsParams {
     fondoBarColor?: string;
@@ -198,7 +197,7 @@ type LayeredTabsComponent = React.FC<LayeredTabsParams> & { Tab: React.FC<TabPro
 
   if (!screenReady) return null;
 
-  return React.createElement('div', { style: { borderRadius: '0.38rem', overflow: 'hidden', display: 'block', padding: '0', margin: '0', boxSizing: 'border-box', width: `100%`, height: `100%`, background: isValidCssColor(fondoColor) ? fondoColor : 'transparent', position: fullWindow ? 'fixed' : 'relative', left: fullWindow ? '0' : 'auto', top: fullWindow ? '0' : 'auto', zIndex: fullWindow ? '999' : 'auto' } },
+  return React.createElement('div', { style: { overflow: 'hidden', display: 'block', padding: '0', margin: '0', boxSizing: 'border-box', width: `100%`, height: `100%`, background: isValidCssColor(fondoColor) ? fondoColor : 'transparent', position: fullWindow ? 'fixed' : 'relative', left: fullWindow ? '0' : 'auto', top: fullWindow ? '0' : 'auto', zIndex: fullWindow ? '999' : 'auto' } },
 
           React.createElement('div', { style: { display: 'grid', gap: '0', gridTemplateColumns: '1fr', gridTemplateRows: tabBarPosition === 0  ? dinamicSize(2.125) + 'rem 1fr' : tabBarPosition === 1 ? dinamicSize(2.125 + 1.4164) + 'rem 1fr' : tabBarPosition === 2 ? '1fr ' + dinamicSize(2.125 + 1.4164) + 'rem' : '1fr ' + dinamicSize(2.125) + 'rem', padding: '0', margin: '0', position: 'relative', boxSizing: 'border-box', width: `100%`, height: `100%` } },
 
@@ -237,11 +236,7 @@ type LayeredTabsComponent = React.FC<LayeredTabsParams> & { Tab: React.FC<TabPro
             ( tabBarPosition === 0 || tabBarPosition === 1 ) && React.createElement('section', { style: { zIndex: 10, height: '100%' /* dinamicSize(18) + 'rem' */, overflowY: 'scroll', display: 'block', background: tabsColorsList[currentTab] ? tabsColorsList[currentTab] : isValidCssColor(fondoColor) ? fondoColor : 'transparent', padding: '0', margin: '0', position: 'relative', boxSizing: 'border-box', width: `100%` } },
               typeof tabsContentList[currentTab] === 'string' ? React.createElement('p', { style: { transition: 'all 150ms linear', display: 'block', position: 'relative', boxSizing: 'border-box', hyphens: 'auto', textAlign: 'justify', textIndent: dinamicSize(1) + 'rem', fontSize: dinamicSize(1.125) + 'rem', fontWeight: 400, color: tabsTextList[currentTab] ?? 'black', lineHeight: 1.625, padding: dinamicSize(1.3)+ 'rem ' + dinamicSize(1.5) + 'rem', margin: '0' } }, tabsContentList[currentTab] ) : tabsContentList[currentTab] ?? null ),
 
-          ),
-
-        //  React.createElement('div', { style: { zIndex: 200, display: 'block', padding: '0', margin: '0', boxSizing: 'border-box', position: 'absolute', inset: 0, boxShadow: 'inset 0 0.1rem 0.6rem rgba(0, 0, 0, 0.15)', pointerEvents: 'none' } } )
-
-        ) };
+          ) ) };
 
 LayeredTabs.Tab = Tab;
 

@@ -24,15 +24,19 @@ export default function Home() {
                                     // "0", "1", "2" o "3" 
                                     // Predefinido "0"
 
-          maxSize = "xl"            // "xl", "lg", "md", "sm" o "xs"
+          maxSize = "xl"            // Tamaño máximo de barra de pestañas.
+                                    // "xl", "lg", "md", "sm" o "xs"
                                     // Predefinido "xl"
 
-          tabWidth = {8}            // "5", "8" u "11"
+          tabWidth = {8}            // Ancho de la barra de pestañas.
+                                    // "5", "8" u "11", cualquier otra
+                                    // cifra será acercada a una de las tres.
                                     // Predefinido "8"
 
-          fixedMaxSize = {false}    // Tamaño responsivo en
-                                    // relación al ancho de
-                                    // la ventana.
+          fixedMaxSize = {false}    // Tamaño fijo o dinámico en
+                                    // relación al ancho de la ventana.
+                                    // Fijo es "true"
+                                    // Dinámico es "false"
                                     // Predefinido "false"
          
           >
@@ -46,9 +50,10 @@ export default function Home() {
               independentBgColor = "white"  // Color de fondo. Predefinido "white"
               independentTxColor = "black"  // Color del texto. Predefinido "black"
           >
-                                           {/* Puede quedar vacío */}
-            Hello A                        {/* Puede incluir texto plano */}
-                                           {/* Puede incluir HTML */}
+                                            {/* Contenido de las capas */}
+                                            {/* Puede quedar vacío */}
+            Hello A                         {/* Puede incluir texto plano */}
+                                            {/* Puede incluir HTML */}
 
           </LayeredTabs.Tab>
           <LayeredTabs.Tab >
