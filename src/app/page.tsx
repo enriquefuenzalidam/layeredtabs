@@ -8,8 +8,8 @@ export default function Home() {
 
           //
           //
-          // Todos los argumentos SON OPCIONALES
-          // Todos las argumentos tienen valores predefinidos
+          // Todos las propiedades tienen valores predefinidos
+          // Por lo que todas SON OPCIONALES
           //
           //
 
