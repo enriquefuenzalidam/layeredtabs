@@ -8,30 +8,44 @@ export default function Home() {
 
           //
           //
-          // Todas las opciones SON OPCIONALES
-          // Todas las opciones tienen valores predefinidos
+          // Todos los argumentos SON OPCIONALES
+          // Todos las argumentos tienen valores predefinidos
           //
           //
 
-          fullWindow={true}         // predefinido 'false'
-          fondoBarColor = "white"   // predefinido "white"
-          ptgnBarColor = "white"    // predefinido "white"
-          fondoColor = "white"      // predefinido "white"
-          slcPptgnColor = "white"   // predefinido "white"
-          tabBarPostn = {0}         // predefinido "0"
-          maxSize = "xl"            // predefinido "xl"
-          tabWidth = {8}            // predefinido "8"
-          fixedMaxSize = {false}    // predefinido "false"
+          fullWindow={true}         // Predefinido "false"
+      
+          fondoBarColor = "white"   // Predefinido "white"
+          ptgnBarColor = "white"    // Predefinido "white"
+          fondoColor = "white"      // Predefinido "white"
+          slcPptgnColor = "white"   // Predefinido "white"
+
+          tabBarPostn = {0}         // Posición de la barra de pestañas.
+                                    // "0", "1", "2" o "3" 
+                                    // Predefinido "0"
+
+          maxSize = "xl"            // "xl", "lg", "md", "sm" o "xs"
+                                    // Predefinido "xl"
+
+          tabWidth = {8}            // "5", "8" o "11"
+                                    // Predefinido "8"
+
+          fixedMaxSize = {false}    // Tamaño responsivo en
+                                    // relación al ancho de
+                                    // la ventana.
+                                    // Predefinido "false"
          
           >
           <LayeredTabs.Tab
-    
-              title='A'                     // predefinido vacío
-              titleLang = 'es'              // predefinido "en"
-              independentBgColor = "white"  // predefinido "white"
-              independentTxColor = "black"  // predefinido "black"
+          
+              title='A'                     // Predefinido vacío
+              titleLang = 'es'              // Idioma del título
+                                            // "en","es","fr","de","it","pt" o "la"
+                                            // Predefinido "en"
 
-              >
+              independentBgColor = "white"  // Color de fondo. Predefinido "white"
+              independentTxColor = "black"  // Color del texto. Predefinido "black"
+          >
                                            {/* Puede ser dejado vacío */}
             Hello A                        {/* Puede incluir texto plano */}
                                            {/* Puede incluir HTML */}
