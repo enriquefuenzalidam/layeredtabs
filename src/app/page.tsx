@@ -40,9 +40,9 @@ export default function Home() {
           slcPptgnColor = "white"   // Color para la pestaña seleccionada.
                                     /// Predefinido "white".
            
-          fondoColor = "white"      // Color de fondo del contenedor del
-                                    // componente y de las capas que no
-                                    // tengan ningún color definido.
+          fondoColor = "white"      // Color de fondo para el contenedor del
+                                    // componente y las capas que no tengan
+                                    // ningún color definido.
                                     /// Predefinido "white".
 
 
@@ -82,6 +82,7 @@ export default function Home() {
               independentTxColor = "black"  // Color del texto de la capa y pestaña.
                                             /// Predefinido "black".
           >
+
                                             {/* El contenido de las capas
                                                 puede quedar vacío, incluir
                                                 texto plano o HTML. */}
