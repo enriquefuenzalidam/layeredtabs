@@ -8,47 +8,75 @@ export default function Home() {
 
           //
           //
-          // Todos las propiedades tienen valores predefinidos
-          // Por lo que todas SON OPCIONALES
+          // Todas las propiedades tienen
+          // valores predefinidos, por lo
+          // que todas SON OPCIONALES de
+          // ser especificadas. Pero aquí son
+          // especificadas con el fin de
+          // ser descritas y explicadas.
           //
           //
 
-          fullWindow={true}         // Predefinido "false"
-      
-          fondoBarColor = "white"   // Predefinido "white"
-          ptgnBarColor = "white"    // Predefinido "white"
-          fondoColor = "white"      // Predefinido "white"
-          slcPptgnColor = "white"   // Predefinido "white"
+          containerAlto="100%"      // Alto del caja contenedora del
+                                    // componente. Efectiva solo si
+                                    // "fullWindow" es "false"
+                                    // Predefinido "10%%".
+                                  
+          fullWindow={true}         // Hace que el componente llene
+                                    // toda la ventana, sea lo que
+                                    // sea que halla en el resto de
+                                    // la página.
+                                    // Predefinido "false".
+                                  
+
+
+          fondoBarColor = "white"   // Color del fondo de la barra de pestañas.
+                                    // Predefinido "white".
+
+          ptgnBarColor = "white"    // Color de las pestañas.
+                                    // Predefinido "white".
+
+          slcPptgnColor = "white"   // Color para la pestaña seleccionada.
+                                    // Predefinido "white".
+           
+          fondoColor = "white"      // Color de fondo del contenedor del
+                                    // componente y de las capas que no
+                                    // tengan ningún color definido.
+                                    // Predefinido "white".
+
 
           tabBarPostn = {0}         // Posición de la barra de pestañas.
-                                    // "0", "1", "2" o "3" 
-                                    // Predefinido "0"
-
-          maxSize = "xl"            // Tamaño máximo de barra de pestañas.
-                                    // "xl", "lg", "md", "sm" o "xs"
-                                    // Predefinido "xl"
+                                    // "0", "1", "2" o "3", cualquier otra
+                                    // cifra, será reemplazada por la predefinida.
+                                    // Predefinido "0".
 
           tabWidth = {8}            // Ancho de la barra de pestañas.
-                                    // "5", "8" u "11", cualquier otra
-                                    // cifra será acercada a una de las tres.
-                                    // Predefinido "8"
+                                    // "5", "8" u "11", cualquier otro valor,
+                                    // será acercado a uno de los tres.
+                                    // Predefinido "8".
 
-          fixedMaxSize = {false}    // Tamaño fijo o dinámico en
-                                    // relación al ancho de la ventana.
-                                    // Fijo es "true"
-                                    // Dinámico es "false"
-                                    // Predefinido "false"
+          maxSize = "xl"            // Tamaño máximo de barra de pestañas.
+                                    // "xl", "lg", "md", "sm" o "xs", cualquier
+                                    // otro valor, será reemplazado por el predefinido.
+                                    // Predefinido "xl".
+
+          fixedMaxSize = {false}    // Tamaño fijo o dinámico en relación al
+                                    // ancho de la ventana. "True" fija el
+                                    // tamaño definido por "maxSize".
+                                    // Fijo es "true" y dinámico es "false".
+                                    // Predefinido "false".
          
           >
           <LayeredTabs.Tab
           
-              title='A'                     // Predefinido vacío
+              title='A'                     // Predefinido vacío.
+  
               titleLang = 'es'              // Idioma del título
                                             // "en","es","fr","de","it","pt" o "la"
-                                            // Predefinido "en"
+                                            // Predefinido "en".
 
-              independentBgColor = "white"  // Color de fondo. Predefinido "white"
-              independentTxColor = "black"  // Color del texto. Predefinido "black"
+              independentBgColor = "white"  // Color de fondo. Predefinido "white".
+              independentTxColor = "black"  // Color del texto. Predefinido "black".
           >
                                             {/* Contenido de las capas */}
                                             {/* Puede quedar vacío */}
