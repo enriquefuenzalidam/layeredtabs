@@ -204,6 +204,20 @@ type LayeredTabsComponent = React.FC<LayeredTabsParams> & { Tab: React.FC<TabPro
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   useEffect(() => { return () => { if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current) } }, []);
 
+
+  const offset = (2.125 * 2 * 378) / 743;
+
+  const widthValue = useCallback((index: number) => {
+    const base = tabWidths.base;
+    if (currentTab === index || (index === 0 && currentMouseOverTag === 0)) {
+      if (shortenedTitles[index].isLongShortened) return tabWidths.longShortened;
+      if (shortenedTitles[index].isShortened) return tabWidths.shortened;
+    }
+    return base;
+  }, [currentTab, currentMouseOverTag, shortenedTitles, tabWidths]);
+
+  const dynTabWidth = (index: number) => dinamicSize(widthValue(index) + offset);
+
   if (!screenReady) return null;
 
   return React.createElement('div', { style: { overflow: 'hidden', display: 'block', padding: '0', margin: '0', boxSizing: 'border-box', width: `100%`, height: fullWindow ? `100%` : isValidCssHeight(containerAlto) ? containerAlto : `100%`, background: isValidCssColor(fondoColor) ? fondoColor : 'transparent', position: fullWindow ? 'fixed' : 'relative', left: fullWindow ? '0' : 'auto', top: fullWindow ? '0' : 'auto', zIndex: fullWindow ? '999' : 'auto' } },
@@ -224,9 +238,9 @@ type LayeredTabsComponent = React.FC<LayeredTabsParams> & { Tab: React.FC<TabPro
                     // Tabs
                     tabsTitleList.map((title, index: number) =>
 
-                    React.createElement('div', { key: index, onClick: () => currentTab === index ? null : setCurrentTab(index), style: {  ...tabsTransition('all'), transform: 'translateX(calc(' + (-shoulderWidth * index) + 'rem))', zIndex: getZIndex(index,currentTab,zIndexMax), display: 'inline-block', position: 'relative', boxSizing: 'border-box', padding: '0', margin: '0', width: currentTab === index || (index === 0 && currentMouseOverTag === 0) ? shortenedTitles[index].isLongShortened ? dinamicSize(tabWidths.longShortened + ( (2.125 * 2 * 378) / 743 ) ) + 'rem' : shortenedTitles[index].isShortened ? dinamicSize(tabWidths.shortened + ( (2.125 * 2 * 378) / 743 ) ) + 'rem' : dinamicSize(tabWidths.base + ( (2.125 * 2 * 378) / 743 ) ) + 'rem' : dinamicSize(tabWidths.base + ( (2.125 * 2 * 378) / 743 ) ) + 'rem', height: '100%', filter: tabBarPosition === 0 || tabBarPosition === 2 ? `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.3 : 0.3 }rem ${dinamicSize(0.5)}rem ${dinamicSize(0.6)}rem rgba(0,0,0,${currentTab === index ? 0.06 : 0.05}))` : `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.3 : 0.3 }rem -${dinamicSize(0.5)}rem ${dinamicSize(0.6)}rem rgba(0,0,0,${currentTab === index ? 0.06 : 0.05}))` }},
-                      React.createElement('div', { style: { transition: 'all 150ms linear', cursor: currentTab === index ? 'default' : 'pointer', display: 'inline-block', padding: '0', margin: '0', position: 'absolute', top: '0', [ index !== 0 && index < currentTab ? 'right' : 'left' ]: '0', boxSizing: 'border-box', overflow: 'visible', width: 'auto', height: `100%`, filter: tabBarPosition === 0 ? `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.15 : 0.15 }rem ${dinamicSize(0.1)}em ${dinamicSize(0.1)}rem rgba(0,0,0,${currentTab === index ? 0.35 : 0.2}))` : tabBarPosition === 1 ? `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.15 : 0.15 }rem -${dinamicSize(0.05)}em ${dinamicSize(0.1)}rem rgba(0,0,0,${currentTab === index ? 0.3 : 0.15}))` : tabBarPosition === 2 ? `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.15 : 0.15 }rem  ${dinamicSize(0.1)}em ${dinamicSize(0.1)}rem rgba(0,0,0,${currentTab === index ? 0.35 : 0.2}))` : `drop-shadow(${ index === currentTab ? 0 : index < currentTab ? -0.15 : 0.15 }rem -${dinamicSize(0.05)}em ${dinamicSize(0.1)}rem rgba(0,0,0,${currentTab === index ? 0.3 : 0.2} ) )` } },
-                        React.createElement('div', { style: { transition: 'all 150ms linear', display: 'block', whiteSpace: 'nowrap', padding: '0', margin: '0', position: 'relative', boxSizing: 'border-box', width: `100%`, height: `100%` } },
+                    React.createElement('div', { key: index, onClick: () => currentTab === index ? null : setCurrentTab(index), style: {  ...tabsTransition('width, filter'), transform: 'translateX(calc(' + (-shoulderWidth * index) + 'rem))', zIndex: getZIndex(index,currentTab,zIndexMax), display: 'inline-block', position: 'relative', boxSizing: 'border-box', padding: '0', margin: '0', width: dynTabWidth(index) + 'rem', height: '100%', filter: 'drop-shadow(' + [ index === currentTab ? '0' : index < currentTab ? '-0.3' : '0.3' ] + 'rem ' + [tabBarPosition === 0 || tabBarPosition === 2 ? '' : '-' ] + dinamicSize(0.5) + 'rem ' + dinamicSize(0.6) + 'rem rgba(0,0,0,0.0' + [ currentTab === index ? '6' : '5' ] + ') )' }},
+                      React.createElement('div', { style: { ...tabsTransition('filter'), cursor: currentTab === index ? 'default' : 'pointer', display: 'inline-block', padding: '0', margin: '0', position: 'absolute', top: '0', [ index !== 0 && index < currentTab ? 'right' : 'left' ]: '0', boxSizing: 'border-box', overflow: 'visible', width: 'auto', height: `100%`, filter: 'drop-shadow(' + [index === currentTab ? '0' : index < currentTab ? '-0.15' : '0.15'] + 'rem ' + [ tabBarPosition === 0 || tabBarPosition === 2 ? dinamicSize(0.1) : dinamicSize(-0.05) ] + 'rem ' + dinamicSize(0.1) + 'rem rgba(0,0,0,0.' + [ currentTab === index ? tabBarPosition === 0 || tabBarPosition === 2 ? '35' : '3' : '2' ] + ') )' } },
+                        React.createElement('div', { style: { ...tabsTransition('all'), display: 'block', whiteSpace: 'nowrap', padding: '0', margin: '0', position: 'relative', boxSizing: 'border-box', width: `100%`, height: `100%` } },
 
                           tabShoulderBlock(index, 0),
 
